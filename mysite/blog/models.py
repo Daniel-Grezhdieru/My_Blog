@@ -10,7 +10,7 @@ STATUS = (
 
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True, allow_unicode = True)
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode = False)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     updated_on = models.DateTimeField('Время обновления',auto_now= True)
     content = models.TextField('Текст')
@@ -36,3 +36,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Комментарий {} от {}'.format(self.post, self.name)
+
